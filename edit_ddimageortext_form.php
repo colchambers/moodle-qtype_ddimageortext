@@ -174,6 +174,7 @@ class qtype_ddimageortext_edit_form extends qtype_ddtoimage_edit_form_base {
     protected function draggable_items_repeated_options() {
         $repeatedoptions = array();
         $repeatedoptions['draggroup']['default'] = '1';
+        $repeatedoptions['drags[draglabel]']['type'] = PARAM_TEXT;
         return $repeatedoptions;
     }
 
@@ -218,8 +219,11 @@ class qtype_ddimageortext_edit_form extends qtype_ddtoimage_edit_form_base {
 
     protected function drop_zones_repeated_options() {
         $repeatedoptions = array();
-        $repeatedoptions['xleft']['type']     = PARAM_INT;
-        $repeatedoptions['ytop']['type']      = PARAM_INT;
+        // The next two are PARAM_RAW becuase we need to distinguish 0 and ''.
+        // We do the necessary validation in the validation method.
+        $repeatedoptions['drops[xleft]']['type']     = PARAM_RAW;
+        $repeatedoptions['drops[ytop]']['type']      = PARAM_RAW;
+        $repeatedoptions['drops[droplabel]']['type'] = PARAM_TEXT;
         $repeatedoptions['choice']['default'] = '0';
         return $repeatedoptions;
     }
