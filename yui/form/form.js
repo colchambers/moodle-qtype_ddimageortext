@@ -124,12 +124,12 @@ YUI.add('moodle-qtype_ddimageortext-form', function(Y) {
                         optionnode.set('selected', true);
                     } else {
                         if (value !== 0) { // no item option is always selectable
-                            var cbselector = 'fieldset#draggableitemheader_'+(value-1)
+                            var cbselector = 'fieldset#id_draggableitemheader_'+(value-1)
                                                                         +' input[type="checkbox"]';
                             var cbel = Y.one(cbselector);
                             var infinite = cbel.get('checked');
                             if (!infinite) {
-                                Y.all('fieldset#dropzoneheader select').some(function (selector) {
+                                Y.all('fieldset#id_dropzoneheader select').some(function (selector) {
                                     if (+selector.get('value') === value) {
                                         optionnode.set('disabled', true);
                                         return true; // stop looping
@@ -144,14 +144,14 @@ YUI.add('moodle-qtype_ddimageortext-form', function(Y) {
         },
 
         stop_selector_events : function () {
-            Y.all('fieldset#dropzoneheader select').detachAll();
+            Y.all('fieldset#id_dropzoneheader select').detachAll();
         },
 
         setup_form_events : function () {
             //events triggered by changes to form data
 
             //x and y coordinates
-            Y.all('fieldset#dropzoneheader input').on('blur', function (e) {
+            Y.all('fieldset#id_dropzoneheader input').on('blur', function (e) {
                 var name = e.target.getAttribute('name');
                 var draginstanceno = this.form.from_name_with_index(name).indexes[0];
                 var fromform = [this.form.get_form_value('drops', [draginstanceno, 'xleft']),
@@ -162,7 +162,7 @@ YUI.add('moodle-qtype_ddimageortext-form', function(Y) {
             }, this);
 
             //change in selected item
-            Y.all('fieldset#dropzoneheader select').on('change', function (e) {
+            Y.all('fieldset#id_dropzoneheader select').on('change', function (e) {
                 var name = e.target.getAttribute('name');
                 var draginstanceno = this.form.from_name_with_index(name).indexes[0];
                 var old = this.doc.drag_item(draginstanceno);

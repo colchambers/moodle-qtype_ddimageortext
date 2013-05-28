@@ -118,7 +118,7 @@ class qtype_ddimageortext_edit_form extends qtype_ddtoimage_edit_form_base {
         $maxsizes->dragimage->height = QTYPE_DDIMAGEORTEXT_DRAGIMAGE_MAXHEIGHT;
 
         $params = array('maxsizes' => $maxsizes,
-                        'topnode' => 'fieldset#previewareaheader');
+                        'topnode' => 'fieldset#id_previewareaheader');
 
         $PAGE->requires->yui_module('moodle-qtype_ddimageortext-form',
                                         'M.qtype_ddimageortext.init_form',
